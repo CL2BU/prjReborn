@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright file="AppTest.java" company="VorpeX">
+ * <copyright file="AvatarManagerImpl.java" company="VorpeX">
  *  Copyright (c) 2011-2012 All Right Reserved, http://vorpex.biz/
  *  
  *  This source is subject to the "Don't Be A Dick" License.
@@ -16,41 +16,34 @@
  *  @date 18-12-2012
  *  @summary
  ******************************************************************************/
-package vorpex;
+package vorpex.spring.service;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+import vorpex.spring.dao.IAvatarDAO;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+@Service(value="avatarManager")
+public class AvatarManagerImpl implements IAvatarManager {
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+	@Resource(name="avatarDAO")
+	private IAvatarDAO avatarDAO = null;
+	
+	/**
+	 * Used to get the DAO of the Avatar model.
+	 * @return the DAO of the Avatar Model
+	 */
+	public IAvatarDAO getAvatarDAO(){
+		
+		return avatarDAO;
+	}
+	
+	/**
+	 * Used to set the DAO of the Avatar Model
+	 * @param avatarDAO the DAO being set.
+	 */
+	public void setAvatarDAO(IAvatarDAO avatarDAO){
+		
+		this.avatarDAO = avatarDAO;
+	}
 }
