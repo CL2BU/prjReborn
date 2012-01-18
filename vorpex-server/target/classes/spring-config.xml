@@ -1,0 +1,8 @@
+<!-- We tell Spring that we are using annotations -->
+<context:annotation-config/>
+
+<!-- Classes that should be scanned to look for resources -->
+<context:component-scan base-package="vorpex" />
+
+<!-- Transaction support via annotations -->
+<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
