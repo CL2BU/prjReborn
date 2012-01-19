@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright file="IAvatarDAO.java" company="VorpeX">
+ * <copyright file="Vorpex.java" company="VorpeX">
  *  Copyright (c) 2011-2012 All Right Reserved, http://vorpex.biz/
  *
  *  This source is subject to the "Don't Be A Dick" License.
@@ -13,16 +13,26 @@
  *
  *  @author Dominic Gunn
  *  @email d.gunn@vorpex.biz
- *  @date 18-12-2012
+ *  @date 19-12-2012
  *  @summary
  ******************************************************************************/
-package vorpex.spring.dao;
+package vorpex.net;
 
-import vorpex.spring.model.Avatar;
+import org.jboss.netty.channel.ChannelPipeline;
+import org.jboss.netty.channel.ChannelPipelineFactory;
 
-public interface IAvatarDAO {
+/**
+ * Class used for the initialisation of ChannelPipeLines.
+ * @author Dominic (d.gunn@vorpex.biz)
+ */
+public class PipelineFactory implements ChannelPipelineFactory {
 
-void saveOrUpdate(Avatar avatar);
-Avatar getAvatarByID(int id);
-
+	/**
+	 * Function used to get the various pipes for
+	 * Netty (handler, encoder, decoder, etc.).
+	 */
+	public final ChannelPipeline getPipeline() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

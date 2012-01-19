@@ -34,75 +34,84 @@ import javax.persistence.Table;
 public class Avatar implements Serializable {
 
 	/**
-	 * Generated Serial ID
+	 * Generated Serial ID.
 	 */
 	private static final long serialVersionUID = 1786414934984938522L;
 
+	/**
+	 * ID of the Avatar.
+	 */
 	@Id
 	@Column(name = "Avatar_id")
 	private int iAvatarID;
-	
+
+	/**
+	 * Name of the Avatar.
+	 */
 	@Column(name =  "Avatar_name")
 	private String sAvatarName;
-	
+
 	/**
-	 * Empty constructor for 'Avatar' model
+	 * Empty constructor for 'Avatar' model.
 	 */
-	public Avatar() {}
-	
+	public Avatar() {
+
+	}
+
 	/**
-	 * Default constructor for 'Avatar' model. 
+	 * Default constructor for 'Avatar' model.
 	 * @param iUserID contains the ID of the users avatar
 	 * @param sUsername contains the name of the persons avatar.
 	 */
-	public Avatar(int iUserID, String sUsername){
-		
+	public Avatar(final int iUserID, final String sUsername) {
+
 		this.iAvatarID = iUserID;
 		this.sAvatarName = sUsername;
 	}
-	
+
 	/**
-	 * Function used to get an Avatar id
+	 * Function used to get an Avatar id.
 	 * @return the id of an Avatar
 	 */
-	public int getAvatarID(){
-		
+	public final int getAvatarID() {
+
 		return this.iAvatarID;
 	}
-	
+
 	/**
-	 * Function used to set an Avatar id
-	 * @param iAvatarID the id to be set
+	 * Function used to set an Avatar id.
+	 * @param iID the id to be set
 	 */
-	public void setAvatarID(int iAvatarID){
-		
-		this.iAvatarID = iAvatarID;
+	public final void setAvatarID(final int iID) {
+
+		this.iAvatarID = iID;
 	}
-	
+
 	/**
-	 * Function used to get an Avatar name
+	 * Function used to get an Avatar name.
 	 * @return the name of an Avatar
 	 */
-	public String getAvatarName(){
-		
+	public final String getAvatarName() {
+
 		return this.sAvatarName;
 	}
-	
+
 	/**
-	 * Function used to set an Avatar name
-	 * @param sAvatarName the name to be set.
+	 * Function used to set an Avatar name.
+	 * @param sName the name to be set.
 	 */
-	public void setAvatarID(String sAvatarName){
-		
-		this.sAvatarName = sAvatarName;
+	public final void setAvatarID(final String sName) {
+
+		this.sAvatarName = sName;
 	}
-	
+
 	/**
 	 * Grabs the unique serial id for this class.
+	 * @return Returns the serial id.
 	 */
 	@Override
-	public int hashCode(){
-		
-		return (int)Avatar.serialVersionUID;
+	public final int hashCode() {
+
+		return (int) Avatar.serialVersionUID;
 	}
 }
