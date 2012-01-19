@@ -27,3 +27,15 @@ INFO main Vorpex - Starting Channel Factory
 INFO main Vorpex - Starting Bootstrap set-up.
 INFO main Vorpex - Starting Netty Socket-Binding
 INFO main Vorpex - Starting Hibernate Session Factory
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Channel Factory
+INFO main Vorpex - Starting Bootstrap set-up.
+INFO main Vorpex - Starting Netty Socket-Binding
+INFO main Vorpex - Starting Hibernate Session Factory
+INFO main Vorpex - BeLoco Server successfully running
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Channel Factory
+INFO main Vorpex - Starting Bootstrap set-up.
+INFO main Vorpex - Starting Netty Socket-Binding
+INFO main Vorpex - Starting Hibernate Session Factory
+INFO main Vorpex - BeLoco Server successfully running

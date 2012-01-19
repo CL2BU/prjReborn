@@ -1,5 +1,5 @@
 /*******************************************************************************
- * <copyright file="Vorpex.java" company="VorpeX">
+ * <copyright file="PipelineFactory.java" company="VorpeX">
  *  Copyright (c) 2011-2012 All Right Reserved, http://vorpex.biz/
  *
  *  This source is subject to the "Don't Be A Dick" License.
@@ -23,7 +23,7 @@ import org.jboss.netty.channel.ChannelPipelineFactory;
 
 /**
  * Class used for the initialisation of ChannelPipeLines.
- * @author Dominic (d.gunn@vorpex.biz)
+ * @author Dominic Gunn (d.gunn@vorpex.biz)
  */
 public class PipelineFactory implements ChannelPipelineFactory {
 
