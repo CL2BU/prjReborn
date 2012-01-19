@@ -28,22 +28,22 @@ public class AvatarManagerImpl implements IAvatarManager {
 
 	@Resource(name="avatarDAO")
 	private IAvatarDAO avatarDAO = null;
-	
+
 	/**
 	 * Used to get the DAO of the Avatar model.
 	 * @return the DAO of the Avatar Model
 	 */
-	public IAvatarDAO getAvatarDAO(){
-		
+	public final IAvatarDAO getAvatarDAO() {
+
 		return avatarDAO;
 	}
-	
+
 	/**
-	 * Used to set the DAO of the Avatar Model
+	 * Used to set the DAO of the Avatar Model.
 	 * @param avatarDAO the DAO being set.
 	 */
 	public void setAvatarDAO(IAvatarDAO avatarDAO){
-		
+
 		this.avatarDAO = avatarDAO;
 	}
 }

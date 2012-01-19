@@ -27,21 +27,27 @@ import org.springframework.stereotype.Service;
 import vorpex.spring.dao.IAvatarDAO;
 import vorpex.spring.model.Avatar;
 
-@Service(value="avatarDAO")
+/**
+ *
+ * @author Dominic
+ *
+ */
+@Service(value = "avatarDAO")
 public class HibernateAvatarDAO extends HibernateDaoSupport implements IAvatarDAO {
 
 	@Autowired
-	public HibernateAvatarDAO(@Qualifier("sessionFactory") SessionFactory sessionFactory){
-		
+	public HibernateAvatarDAO(@Qualifier("sessionFactory") final
+			SessionFactory sessionFactory) {
+
 		this.setSessionFactory(sessionFactory);
 	}
-	
+
 	/**
-	 * Used to save or update any changes made to a users Avatar
+	 * Used to save or update any changes made to a users Avatar.
 	 * @param avatar the instance of Avatar to be updated.
 	 */
-	public void saveOrUpdate(Avatar avatar) {
-		
+	public final void saveOrUpdate(final Avatar avatar) {
+
 		this.getHibernateTemplate().save(avatar);
 	}
 
@@ -50,8 +56,8 @@ public class HibernateAvatarDAO extends HibernateDaoSupport implements IAvatarDA
 	 * @param id the ID of the users avatar
 	 * @return an instance of the users avatar.
 	 */
-	public Avatar getAvatarByID(int id) {
-		
+	public final Avatar getAvatarByID(final int id) {
+
 		return this.getHibernateTemplate().load(Avatar.class, id);
 	}
 }
