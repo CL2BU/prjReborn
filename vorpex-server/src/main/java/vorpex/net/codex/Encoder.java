@@ -1,6 +1,6 @@
 /*******************************************************************************
  * /*******************************************************************************
- * <copyright file="SpringContext.java" company="VorpeX">
+ * <copyright file="Encoder.java" company="VorpeX">
  * Copyright (c) 2011-2012 All Right Reserved, http://vorpex.biz/
  * 
  * This source is subject to the "Don't Be A Dick" License.
@@ -17,27 +17,31 @@
  * @date 21-12-2012
  * @summary
  ******************************************************************************/
-package vorpex.spring;
+package vorpex.net.codex;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.nio.channels.Channels;
 
-public class SpringContext {
+import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.channel.MessageEvent;
+import org.jboss.netty.channel.SimpleChannelHandler;
 
-	private static ApplicationContext context;
-    private static SpringContext instance;
-    private final static String CONFIG_FILE = "spring-config.xml";
+import vorpex.beloco.message.ServerMessage;
 
-    public static SpringContext getInstance() {
-        if (null == instance) {
-            instance = new SpringContext();
-            context = new ClassPathXmlApplicationContext(
-                    CONFIG_FILE);
+/**
+ * Class used for the writing messages back to the client
+ * @author Dominic Gunn (d.gunn@vorpex.biz)
+ */
+
+public class Encoder extends SimpleChannelHandler {
+
+	@Override
+	public void writeRequested(final ChannelHandlerContext ctx, final MessageEvent e) {
+
+		// Check we're sending a valid Message and nothing went wrong
+        if (e.getMessage() instanceof ServerMessage) {
+            ServerMessage message = (ServerMessage) e.getMessage();
+
+            Channels.write(ctx, e.getFuture(), message.getBytes());
         }
-        return instance;
-    }
-
-    public Object getBean(String bean) {
-        return context.getBean(bean);
     }
 }

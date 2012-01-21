@@ -22,16 +22,13 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelException;
 import org.jboss.netty.channel.ChannelFactory;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
-import vorpex.composers.InitComposer;
-import vorpex.composers.LoginComposer;
+import vorpex.beloco.BeLoco;
 import vorpex.logger.Logger;
-import vorpex.net.PacketHandler;
 import vorpex.net.PipelineFactory;
 
 /**
@@ -44,9 +41,14 @@ public class Vorpex {
 	 * Hibernate Session Factory.
 	 */
 	private static SessionFactory sessionFactory;
-	public static PacketHandler[] Handler;
+
 	/**
-	 * Main method for the .jar
+	 * Used for anything related to 'BeLoco'. Including Session Management
+	 */
+	private static BeLoco beLoco = new BeLoco();
+
+	/**
+	 * Main method for the .jar.
 	 * @param args Any parameters passed
 	 */
     public static void main(final String[] args) {
@@ -57,40 +59,16 @@ public class Vorpex {
     	// Initial start-up declaration.
         Logger.log(Vorpex.class, "Attempting to setup the beloco server");
 
+        // Start Hibernate
+        setupHibernate();
+
         // Start Netty.
         setupNetty();
 
-        // Start Hibernate
-        setupHibernate("localhost", "root", "vorpexdb", "hobbitex99");
-
-        // Intialize Requests
-        RequestsInit();
-        
     	// Start-up complete
         Logger.log(Vorpex.class, "BeLoco Server successfully running");
     }
 
-    /**
-     * Requests set-up
-     */
-    private static void RequestsInit()
-    {
-    	try
-    	{
-    		Handler = new PacketHandler[10000];
-    		RegisterRequest(1, new InitComposer());
-    		RegisterRequest(2, new LoginComposer());
-    	}
-    	catch(Exception ex)
-    	{ }
-    }
-    /**
-     * Request Registrar
-     */
-    private static void RegisterRequest(int hHeader, PacketHandler hHndl)
-    {
-    	Handler[hHeader] = hHndl;
-    }
     /**
      * Used to set-up everything related to Netty.
      */
@@ -119,26 +97,9 @@ public class Vorpex {
     /**
      * Function used to start-up the hibernate session factory.
      */
-    private static void setupHibernate(String DATABASE_HOST, String User, String Database, String Password) {
-		Configuration cConfig = new Configuration();
-		
-		/**
-		 * This will be able for Hibernate 3.6.0 and 4.0.1
-		 */
-		/**
-		 * Setting the main class
-		 */
-		cConfig.configure("hibernate.cfg.xml");
-        /**
-         * Starting Session Factory with the Properties up here
-         */
-        /**
-         * Creating the ServiceRegistry
-         */
-        /**
-         * Set the Factory for able to use
-         */
-        setSessionFactory(cConfig.configure().buildSessionFactory());
+    private static void setupHibernate() {
+    	Logger.log(Vorpex.class, "Starting Hibernate Configuration");
+        setSessionFactory(new org.hibernate.cfg.Configuration().configure().buildSessionFactory());
     }
 
     /**
@@ -164,5 +125,19 @@ public class Vorpex {
 	 */
 	public static void setSessionFactory(final SessionFactory factory) {
 		Vorpex.sessionFactory = factory;
+	}
+
+	/**
+	 * @return the beLoco
+	 */
+	public static BeLoco getBeLoco() {
+		return beLoco;
+	}
+
+	/**
+	 * @param beloco the beLoco to set
+	 */
+	public static void setBeLoco(final BeLoco beloco) {
+		Vorpex.beLoco = beloco;
 	}
 }

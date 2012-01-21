@@ -1,6 +1,6 @@
 /*******************************************************************************
  * /*******************************************************************************
- * <copyright file="SpringContext.java" company="VorpeX">
+ * <copyright file="InitMessageEvent.java" company="VorpeX">
  * Copyright (c) 2011-2012 All Right Reserved, http://vorpex.biz/
  * 
  * This source is subject to the "Don't Be A Dick" License.
@@ -17,27 +17,24 @@
  * @date 21-12-2012
  * @summary
  ******************************************************************************/
-package vorpex.spring;
+package vorpex.beloco.message.events;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import vorpex.beloco.game.Session;
+import vorpex.beloco.message.ClientMessage;
+import vorpex.beloco.message.IClientMessage;
 
-public class SpringContext {
+/**
+ * Incoming Event
+ * @author Dominic Gunn (d.gunn@vorpex.biz)
+ */
+public class InitMessageEvent implements IClientMessage {
 
-	private static ApplicationContext context;
-    private static SpringContext instance;
-    private final static String CONFIG_FILE = "spring-config.xml";
+	/* (non-Javadoc)
+	 * @see vorpex.beloco.message.IClientMessage#handle(vorpex.beloco.game.Session, vorpex.beloco.message.ClientMessage)
+	 */
+	@Override
+	public void handle(Session session, ClientMessage cMessage) {
+		// TODO Auto-generated method stub
 
-    public static SpringContext getInstance() {
-        if (null == instance) {
-            instance = new SpringContext();
-            context = new ClassPathXmlApplicationContext(
-                    CONFIG_FILE);
-        }
-        return instance;
-    }
-
-    public Object getBean(String bean) {
-        return context.getBean(bean);
-    }
+	}
 }
