@@ -9,9 +9,9 @@
         <!-- Database session settings -->
         <property name="hibernate.connection.provider_class">com.jolbox.bonecp.provider.BoneCPConnectionProvider</property>
         <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1/beloco</property>
-        <property name="hibernate.connection.username">beloco</property>
-        <property name="hibernate.connection.password">M9ZdaJLZU5Pq4WwV</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1/vorpexdb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">hobbitex99</property>
 
         <!-- BoneCP session settings -->
         <property name="bonecp.idleMaxAgeInMinytes">240</property>

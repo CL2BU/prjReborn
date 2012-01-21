@@ -22,12 +22,16 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.ChannelException;
 import org.jboss.netty.channel.ChannelFactory;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
+import vorpex.composers.InitComposer;
+import vorpex.composers.LoginComposer;
 import vorpex.logger.Logger;
+import vorpex.net.PacketHandler;
 import vorpex.net.PipelineFactory;
 
 /**
@@ -40,7 +44,7 @@ public class Vorpex {
 	 * Hibernate Session Factory.
 	 */
 	private static SessionFactory sessionFactory;
-
+	public static PacketHandler[] Handler;
 	/**
 	 * Main method for the .jar
 	 * @param args Any parameters passed
@@ -57,12 +61,36 @@ public class Vorpex {
         setupNetty();
 
         // Start Hibernate
-        setupHibernate();
+        setupHibernate("localhost", "root", "vorpexdb", "hobbitex99");
 
+        // Intialize Requests
+        RequestsInit();
+        
     	// Start-up complete
         Logger.log(Vorpex.class, "BeLoco Server successfully running");
     }
 
+    /**
+     * Requests set-up
+     */
+    private static void RequestsInit()
+    {
+    	try
+    	{
+    		Handler = new PacketHandler[10000];
+    		RegisterRequest(1, new InitComposer());
+    		RegisterRequest(2, new LoginComposer());
+    	}
+    	catch(Exception ex)
+    	{ }
+    }
+    /**
+     * Request Registrar
+     */
+    private static void RegisterRequest(int hHeader, PacketHandler hHndl)
+    {
+    	Handler[hHeader] = hHndl;
+    }
     /**
      * Used to set-up everything related to Netty.
      */
@@ -73,14 +101,14 @@ public class Vorpex {
                 Executors.newCachedThreadPool(),
                 Executors.newCachedThreadPool()
         );
-
+ 
     	Logger.log(Vorpex.class, "Starting Bootstrap set-up.");
     	ServerBootstrap tBootStrap = new ServerBootstrap(tFactory);
     	tBootStrap.setPipelineFactory(new PipelineFactory());
 
     	try {
     		Logger.log(Vorpex.class, "Starting Netty Socket-Binding");
-    		tBootStrap.bind(new InetSocketAddress("127.0.0.1", 30000));
+    		tBootStrap.bind(new InetSocketAddress(30000));
     	} catch (ChannelException ce) {
             Logger.fatal(Vorpex.class, ce.getMessage());
             getSessionFactory().close();
@@ -91,11 +119,26 @@ public class Vorpex {
     /**
      * Function used to start-up the hibernate session factory.
      */
-    private static void setupHibernate() {
-
-        Logger.log(Vorpex.class, "Starting Hibernate Session Factory");
-
-        setSessionFactory((new org.hibernate.cfg.Configuration()).configure().buildSessionFactory());
+    private static void setupHibernate(String DATABASE_HOST, String User, String Database, String Password) {
+		Configuration cConfig = new Configuration();
+		
+		/**
+		 * This will be able for Hibernate 3.6.0 and 4.0.1
+		 */
+		/**
+		 * Setting the main class
+		 */
+		cConfig.configure("hibernate.cfg.xml");
+        /**
+         * Starting Session Factory with the Properties up here
+         */
+        /**
+         * Creating the ServiceRegistry
+         */
+        /**
+         * Set the Factory for able to use
+         */
+        setSessionFactory(cConfig.configure().buildSessionFactory());
     }
 
     /**

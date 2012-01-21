@@ -46,6 +46,7 @@ public class HibernateAvatarDAO extends HibernateDaoSupport implements IAvatarDA
 	 * Used to save or update any changes made to a users Avatar.
 	 * @param avatar the instance of Avatar to be updated.
 	 */
+	@Override
 	public final void saveOrUpdate(final Avatar avatar) {
 
 		this.getHibernateTemplate().save(avatar);
@@ -56,6 +57,7 @@ public class HibernateAvatarDAO extends HibernateDaoSupport implements IAvatarDA
 	 * @param id the ID of the users avatar
 	 * @return an instance of the users avatar.
 	 */
+	@Override
 	public final Avatar getAvatarByID(final int id) {
 
 		return this.getHibernateTemplate().load(Avatar.class, id);

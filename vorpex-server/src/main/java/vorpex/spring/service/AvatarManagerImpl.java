@@ -19,6 +19,7 @@
 package vorpex.spring.service;
 
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import vorpex.spring.dao.IAvatarDAO;

@@ -18,8 +18,6 @@
  ******************************************************************************/
 package vorpex.logger;
 
-import vorpex.Vorpex;
-
 /**
  * Classed used for logging data to the console window.
  * @author Dominic
@@ -52,10 +50,10 @@ public class Logger {
 	 * @param sLog The data to be logged to console window.
 	 */
 	public static void debug(final String sClassName, final String sLog) {
-
+	
 		// Initialise the logger with the class being passed.
 		logger = org.apache.log4j.Logger.getLogger(sClassName);
-
+	
 		// Log a general messsage
 		logger.debug(sLog);
 	}

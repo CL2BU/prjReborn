@@ -20,6 +20,7 @@ package vorpex.net;
 
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
+import org.jboss.netty.channel.Channels;
 
 /**
  * Class used for the initialisation of ChannelPipeLines.
@@ -31,8 +32,9 @@ public class PipelineFactory implements ChannelPipelineFactory {
 	 * Function used to get the various pipes for
 	 * Netty (handler, encoder, decoder, etc.).
 	 */
-	public final ChannelPipeline getPipeline() throws Exception {
+	@Override
+	public ChannelPipeline getPipeline() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return Channels.pipeline(new ReceivingFactory());
 	}
 }
