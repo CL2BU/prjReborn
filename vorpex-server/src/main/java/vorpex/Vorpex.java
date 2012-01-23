@@ -75,9 +75,9 @@ public class Vorpex {
     private static void setupNetty() {
 
     	Logger.log(Vorpex.class, "Starting Channel Factory");
-    	ChannelFactory tFactory = new NioServerSocketChannelFactory(
-                Executors.newCachedThreadPool(),
-                Executors.newCachedThreadPool()
+    	ChannelFactory tFactory = new NioServerSocketChannelFactory(Executors
+                .newCachedThreadPool(), Executors.newCachedThreadPool(),
+                Runtime.getRuntime().availableProcessors() * 2 + 1
         );
  
     	Logger.log(Vorpex.class, "Starting Bootstrap set-up.");

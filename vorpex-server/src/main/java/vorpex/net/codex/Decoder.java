@@ -55,7 +55,7 @@ public class Decoder extends FrameDecoder {
 		buffer.markReaderIndex();
 
 		// Grab the first byte, then reset to check for policy I guess
-		boolean policyCheck = (buffer.readByte() == 0x3C) ? true : false;
+		boolean policyCheck = (buffer.readByte() == 60) ? true : false;
 		
 		// Now we'll check the first character :-)
 		if (!policyCheck) {	// '@'

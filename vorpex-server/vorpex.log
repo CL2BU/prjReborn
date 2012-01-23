@@ -6465,3 +6465,46 @@ INFO main Vorpex - Starting Bootstrap set-up.
 INFO main Vorpex - Starting Netty Socket-Binding
 INFO main Vorpex - BeLoco Server successfully running
 INFO New I/O server worker #1-1 ReceivingFactory - Incoming connection from 62.195.188.209
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Hibernate Configuration
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Hibernate Configuration
+INFO main Vorpex - Starting Channel Factory
+INFO main Vorpex - Starting Bootstrap set-up.
+INFO main Vorpex - Starting Netty Socket-Binding
+INFO main Vorpex - BeLoco Server successfully running
+INFO New I/O server boss #1 ([id: 0x309fe84e, /0.0.0.0:30000]) SessionManager - Accepted Session (id: 1, ip: 127.0.0.1)
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Hibernate Configuration
+INFO main Vorpex - Starting Channel Factory
+INFO main Vorpex - Starting Bootstrap set-up.
+INFO main Vorpex - Starting Netty Socket-Binding
+INFO main Vorpex - BeLoco Server successfully running
+INFO New I/O server boss #1 ([id: 0x2d397e5c, /0.0.0.0:30000]) SessionManager - Accepted Session (id: 1, ip: 127.0.0.1)
+INFO New I/O server worker #1-1 Decoder - Received XML Policy Request. Attempting to write-back relevant data
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Hibernate Configuration
+INFO main Vorpex - Starting Channel Factory
+INFO main Vorpex - Starting Bootstrap set-up.
+INFO main Vorpex - Starting Netty Socket-Binding
+INFO main Vorpex - BeLoco Server successfully running
+INFO New I/O server boss #1 ([id: 0x7a9300cc, /0.0.0.0:30000]) SessionManager - Accepted Session (id: 1, ip: 127.0.0.1)
+INFO New I/O server worker #1-1 Decoder - Received XML Policy Request. Attempting to write-back relevant data
+INFO New I/O server boss #1 ([id: 0x7a9300cc, /0.0.0.0:30000]) SessionManager - Accepted Session (id: 2, ip: 127.0.0.1)
+INFO New I/O server worker #1-2 Decoder - Received message with id 4000
+INFO New I/O server worker #1-2 MessageHandler - Unkwown Message (id: 4000, client session: 2)
+INFO New I/O server worker #1-2 Decoder - Received message with id 2091
+INFO New I/O server worker #1-2 MessageHandler - Unkwown Message (id: 2091, client session: 2)
+INFO main Vorpex - Attempting to setup the beloco server
+INFO main Vorpex - Starting Hibernate Configuration
+INFO main Vorpex - Starting Channel Factory
+INFO main Vorpex - Starting Bootstrap set-up.
+INFO main Vorpex - Starting Netty Socket-Binding
+INFO main Vorpex - BeLoco Server successfully running
+INFO New I/O server boss #1 ([id: 0x05867df9, /0.0.0.0:30000]) SessionManager - Accepted Session (id: 1, ip: 127.0.0.1)
+INFO New I/O server worker #1-1 Decoder - Received XML Policy Request. Attempting to write-back relevant data
+INFO New I/O server boss #1 ([id: 0x05867df9, /0.0.0.0:30000]) SessionManager - Accepted Session (id: 2, ip: 127.0.0.1)
+INFO New I/O server worker #1-2 Decoder - Received message with id 4000
+INFO New I/O server worker #1-2 MessageHandler - Unkwown Message (id: 4000, client session: 2)
+INFO New I/O server worker #1-2 Decoder - Received message with id 2091
+INFO New I/O server worker #1-2 MessageHandler - Unkwown Message (id: 2091, client session: 2)

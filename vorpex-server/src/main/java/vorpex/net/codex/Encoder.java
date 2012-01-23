@@ -20,8 +20,11 @@
 package vorpex.net.codex;
 
 import java.nio.channels.Channels;
+import java.nio.charset.Charset;
 
+import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 
@@ -37,11 +40,20 @@ public class Encoder extends SimpleChannelHandler {
 	@Override
 	public void writeRequested(final ChannelHandlerContext ctx, final MessageEvent e) {
 
+		// Need to do an XML Policy check.
+		if (!(e.getMessage() instanceof ServerMessage) && (e.getMessage() instanceof String)) {
+			
+			//We can just send a string
+			org.jboss.netty.channel.Channels.write(
+					ctx, e.getFuture(), ChannelBuffers.copiedBuffer((String)e.getMessage(), Charset.forName("UTF-8")));
+			return;
+		}
+
 		// Check we're sending a valid Message and nothing went wrong
         if (e.getMessage() instanceof ServerMessage) {
             ServerMessage message = (ServerMessage) e.getMessage();
 
-            Channels.write(ctx, e.getFuture(), message.getBytes());
+            org.jboss.netty.channel.Channels.write(ctx, e.getFuture(), message.getMessageData());
         }
     }
 }

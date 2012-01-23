@@ -25,6 +25,8 @@ import org.jboss.netty.channel.Channel;
 import vorpex.Vorpex;
 import vorpex.beloco.message.ClientMessage;
 import vorpex.beloco.message.ServerMessage;
+import vorpex.logger.Logger;
+import vorpex.net.codex.Decoder;
 
 /**
  * Class used for the handling of individual sessions.
@@ -58,7 +60,7 @@ public class Session {
 	 * @param cMessage A single message to be handled.
 	 */
 	public void handleMessage(final ClientMessage cMessage) {
-
+		
 		Vorpex.getBeLoco().getMessageHandler().invoke(this, cMessage);
 	}
 

@@ -18,9 +18,14 @@
  ******************************************************************************/
 package vorpex.net;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
 import org.jboss.netty.channel.Channels;
+import org.jboss.netty.handler.execution.ExecutionHandler;
+import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
 
 import vorpex.net.codex.Decoder;
 import vorpex.net.codex.Encoder;
@@ -47,6 +52,10 @@ public class PipelineFactory implements ChannelPipelineFactory {
 		cPipeline.addLast("handler", new ChannelHandler());
 		cPipeline.addLast("decoder", new Decoder());
 		cPipeline.addLast("encoder", new Encoder());
+		cPipeline.addLast("pipelineExecutor", new ExecutionHandler(
+				new OrderedMemoryAwareThreadPoolExecutor(
+                200, 1048576, 1073741824, 100, TimeUnit.MILLISECONDS, Executors
+                .defaultThreadFactory())));
 		
 		return cPipeline;
 	}
